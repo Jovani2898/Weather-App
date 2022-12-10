@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {Favourites} from './src/components/favouritesScreen/favouritesScreen';
 import {Home} from './src/components/homeScreen/homeScreen';
+import {Navigation} from './src/components/navigation/Navigation';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,10 +11,11 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
+  const [activePage, setActivePage] = useState('home');
   return (
     <SafeAreaView style={styles.container}>
-      <Home />
-      <Favourites />
+      {activePage === 'home' ? <Home /> : <Favourites />}
+      <Navigation onPress={setActivePage} />
     </SafeAreaView>
   );
 };
