@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
   },
   touchableOpacity: {
     padding: 5,
+    backgroundColor: '#fff',
   },
   touchableOpacityText: {
     textAlign: 'center',

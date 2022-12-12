@@ -34,7 +34,7 @@ export const Home = ({changeBackground}) => {
       const weatherString = getWeatherCodeTitle(
         parseInt(data.weathercode, 10),
       )?.toLowerCase();
-      changeBackground(`./assets/${weatherString}.png`);
+      changeBackground(weatherString);
     }
   }, [data, changeBackground]);
   return (
