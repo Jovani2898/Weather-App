@@ -44,6 +44,23 @@ export const Favourites = () => {
             </Text>
           </TouchableOpacity>
         ))}
+        {/* <FlatList
+          data={favourites}
+          renderItem={({item}: {item: favourites}) => (
+            <TouchableOpacity
+              style={styles.listItem}
+              key={item.name}
+              onPress={() => {
+                setSelectedItem(item);
+                setShowModal(true);
+              }}>
+              <Text style={styles.listItemRegion}>Region: {item.name}</Text>
+              <Text style={styles.listItemTemperature}>
+                Temperature: {item.temperature}
+              </Text>
+            </TouchableOpacity>
+          )}
+        /> */}
       </ScrollView>
       {showModal ? (
         <Modal

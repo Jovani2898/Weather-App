@@ -76,7 +76,7 @@ export const Modal = ({onClose, data, onRemove}) => {
           <Text style={styles.text}>Temperature: {data?.temperature}</Text>
           <Text style={styles.text}>
             {data?.weathercode
-              ? getWeatherCodeTitle(parseInt(data.weathercode))
+              ? getWeatherCodeTitle(parseInt(data.weathercode, 10))
               : ''}
           </Text>
         </View>

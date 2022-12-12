@@ -15,5 +15,27 @@ export const styles = StyleSheet.create({
   },
   touchableOpacityText: {
     textAlign: 'center',
+    borderWidth: 1,
+    paddingVertical: 5,
+    marginHorizontal: 100,
+  },
+  errorContainer: {
+    backgroundColor: '#393E46',
+    paddingVertical: 5,
+    marginVertical: 100,
+    marginHorizontal: 100,
+    alignItems: 'center',
+  },
+  errorText: {
+    textAlign: 'center',
+    color: '#CF0A0A',
+  },
+  loadingContainer: {
+    marginVertical: 70,
+    marginHorizontal: 70,
+  },
+  loadingText: {
+    color: '#1AA6B7',
+    textAlign: 'center',
   },
 });
