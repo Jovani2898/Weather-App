@@ -4,14 +4,22 @@ import {useWeather} from '../../hooks/useWeather/useWeather';
 import {styles} from './styles';
 import {Modal} from '../modal/modal';
 import {getWeatherCodeTitle} from '../../utils/utils';
+import {useStorage} from '../../hooks/useStorage/useStorage';
 
 export const Home = ({changeBackground}) => {
   const [search, setSearch] = useState('');
   const [showModal, setShowModal] = useState(false);
   const {setCity, data, error, loading} = useWeather();
+  const {removeFromFavourites, getFavourites, setFavourites} = useStorage();
 
   const onInputChange = e => {
     setSearch(e.nativeEvent.text);
+  };
+
+  const removeFavourites = async favouritesItem => {
+    await removeFromFavourites(favouritesItem);
+    const favourites = await getFavourites();
+    setFavourites(favourites);
   };
 
   const onSearch = () => {
@@ -21,12 +29,6 @@ export const Home = ({changeBackground}) => {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  useEffect(() => {
-    if (data) {
-      setShowModal(true);
-    }
-  }, [data]);
 
   useEffect(() => {
     if (data) {
@@ -65,7 +67,7 @@ export const Home = ({changeBackground}) => {
         )}
       </View>
       {showModal ? (
-        <Modal onClose={closeModal} data={data} onRemove={() => {}} />
+        <Modal onClose={closeModal} data={data} onRemove={removeFavourites} /> // modal видет data с хука тут
       ) : null}
     </>
   );

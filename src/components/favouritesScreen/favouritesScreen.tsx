@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, Text, TouchableOpacity} from 'react-native';
+import {FlatList, ScrollView, Text, TouchableOpacity} from 'react-native';
 import {useStorage} from '../../hooks/useStorage/useStorage';
 import {styles} from './styles';
 import {Modal} from '../modal/modal';
@@ -23,28 +23,15 @@ export const Favourites = () => {
   };
 
   const removeFavourites = async favouritesItem => {
-    await removeFromFavourites(favouritesItem);
-    const data = await getFavourites();
+    await removeFromFavourites(favouritesItem); //удаляем фавориты
+    const data = await getFavourites(); // а тут обновили и сохранили
     setFavourites(data);
   };
   return (
     <>
       <ScrollView style={styles.container}>
-        {favourites.map(item => (
-          <TouchableOpacity
-            style={styles.listItem}
-            key={item.name}
-            onPress={() => {
-              setSelectedItem(item);
-              setShowModal(true);
-            }}>
-            <Text style={styles.listItemRegion}>Region: {item.name}</Text>
-            <Text style={styles.listItemTemperature}>
-              Temperature: {item.temperature}
-            </Text>
-          </TouchableOpacity>
-        ))}
-        {/* <FlatList
+        <FlatList
+          ListEmptyComponent={() => <Text>No Data</Text>}
           data={favourites}
           renderItem={({item}: {item: favourites}) => (
             <TouchableOpacity
@@ -60,7 +47,7 @@ export const Favourites = () => {
               </Text>
             </TouchableOpacity>
           )}
-        /> */}
+        />
       </ScrollView>
       {showModal ? (
         <Modal

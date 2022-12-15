@@ -1,5 +1,7 @@
 export const getWeatherCodeTitle = (weathercode: number) => {
-  if (weathercode < 20) {
+  if (weathercode < 10) {
+    return 'Sunny';
+  } else if (weathercode < 20) {
     return 'Clouds';
   } else if (weathercode < 29) {
     return 'Rain Light';
@@ -15,6 +17,38 @@ export const getWeatherCodeTitle = (weathercode: number) => {
     return 'Ice Pellets';
   } else if (weathercode < 89) {
     return 'Thunderstorm';
+  }
+};
+
+const sunnyBG = require('../../assets/sunny.png');
+const cloudsBG = require('../../assets/clouds.png');
+const rainLightBG = require('../../assets/rainlight.png');
+const snowBG = require('../../assets/snow.png');
+const fogBG = require('../../assets/fog.png');
+const drizzleBG = require('../../assets/drizzle.png');
+const rainHeavyBG = require('../../assets/rainheavy.png');
+const icePelletsBG = require('../../assets/icepellets.png');
+const thunderstormBG = require('../../assets/thunderstorm.png');
+
+export const getBackground = (uri: string) => {
+  if (uri === 'sunny') {
+    return sunnyBG;
+  } else if (uri === 'clouds') {
+    return cloudsBG;
+  } else if (uri === 'rainlight') {
+    return rainLightBG;
+  } else if (uri === 'snow') {
+    return snowBG;
+  } else if (uri === 'fog') {
+    return fogBG;
+  } else if (uri === 'drizzle') {
+    return drizzleBG;
+  } else if (uri === 'rainheavy') {
+    return rainHeavyBG;
+  } else if (uri === 'icepellets') {
+    return icePelletsBG;
+  } else if (uri === 'thunderstorm') {
+    return thunderstormBG;
   }
 };
 

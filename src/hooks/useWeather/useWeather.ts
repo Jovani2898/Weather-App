@@ -4,7 +4,6 @@ export const useWeather = () => {
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const [data, setdata] = useState<{
     name: string;
     temperature: string;
@@ -22,7 +21,7 @@ export const useWeather = () => {
           const geoDataResponse = await fetch(
             `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`,
           )
-            .then(response => response.json())
+            .then(response => response.json()) // бы переводим стринг в обьект
             .then(response => response.results);
 
           const {latitude, longitude} = geoDataResponse[0];

@@ -12,13 +12,14 @@ export const styles = StyleSheet.create({
   },
   touchableOpacity: {
     padding: 5,
-    backgroundColor: '#fff',
   },
   touchableOpacityText: {
     textAlign: 'center',
     borderWidth: 1,
+    borderColor: '#FEFCF3',
     paddingVertical: 5,
     marginHorizontal: 100,
+    color: '#000000',
   },
   errorContainer: {
     backgroundColor: '#393E46',
