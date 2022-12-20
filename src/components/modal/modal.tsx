@@ -36,7 +36,11 @@ export const Modal = ({onClose, data, onRemove}) => {
   }, [data, existInFavourites]);
 
   return (
-    <RNModal visible={true} presentationStyle="pageSheet" animationType="slide">
+    <RNModal
+      visible={true}
+      // presentationStyle="fullScreen"
+      animationType="slide"
+      transparent={true}>
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity

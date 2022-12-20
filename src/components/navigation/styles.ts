@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     position: 'absolute',
     width: '100%',
-    bottom: 50,
+    bottom: 0,
     backgroundColor: '#0E5E6F',
   },
   touchableOpacity: {borderWidth: 1, flex: 1, padding: 8},

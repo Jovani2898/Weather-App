@@ -5,24 +5,30 @@ import {Home} from './src/components/homeScreen/homeScreen';
 import {Navigation} from './src/components/navigation/Navigation';
 import {getBackground} from './src/utils/utils';
 
+import {SharedContextProvider} from './src/contexts/sharedContext';
+
 const App = () => {
   const [activePage, setActivePage] = useState('home');
   const [background, setBackground] = useState(null);
 
+  const [navigationHeight, setNavigationHeight] = useState(0);
+
   return (
-    <SafeAreaView style={styles.container}>
-      <ImageBackground
-        source={getBackground(background || '')}
-        resizeMode="cover"
-        style={styles.backgroundIMG}>
-        {activePage === 'home' ? (
-          <Home changeBackground={setBackground} />
-        ) : (
-          <Favourites />
-        )}
-        <Navigation onPress={setActivePage} />
-      </ImageBackground>
-    </SafeAreaView>
+    <SharedContextProvider value={{navigationHeight, setNavigationHeight}}>
+      <SafeAreaView style={styles.container}>
+        <ImageBackground
+          source={getBackground(background || '')}
+          resizeMode="cover"
+          style={styles.backgroundIMG}>
+          {activePage === 'home' ? (
+            <Home changeBackground={setBackground} />
+          ) : (
+            <Favourites />
+          )}
+          <Navigation onPress={setActivePage} />
+        </ImageBackground>
+      </SafeAreaView>
+    </SharedContextProvider>
   );
 };
 

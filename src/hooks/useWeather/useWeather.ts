@@ -28,6 +28,7 @@ export const useWeather = () => {
           const weatherResponse = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&daily=sunrise,sunset&timezone=Asia/Tbilisi`,
           ).then(response => response.json());
+
           setdata({
             name: geoDataResponse[0].name,
             temperature: weatherResponse.current_weather.temperature,
