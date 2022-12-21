@@ -6,6 +6,8 @@ import {Navigation} from './src/components/navigation/Navigation';
 import {getBackground} from './src/utils/utils';
 
 import {SharedContextProvider} from './src/contexts/sharedContext';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
 
 const App = () => {
   const [activePage, setActivePage] = useState('home');
@@ -14,7 +16,8 @@ const App = () => {
   const [navigationHeight, setNavigationHeight] = useState(0);
 
   return (
-    <SharedContextProvider value={{navigationHeight, setNavigationHeight}}>
+    // <SharedContextProvider value={{navigationHeight, setNavigationHeight}}>
+    <Provider store={store}>
       <SafeAreaView style={styles.container}>
         <ImageBackground
           source={getBackground(background || '')}
@@ -28,7 +31,8 @@ const App = () => {
           <Navigation onPress={setActivePage} />
         </ImageBackground>
       </SafeAreaView>
-    </SharedContextProvider>
+    </Provider>
+    // </SharedContextProvider>
   );
 };
 

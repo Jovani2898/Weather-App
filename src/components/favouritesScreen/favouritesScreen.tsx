@@ -10,6 +10,8 @@ import {useStorage} from '../../hooks/useStorage/useStorage';
 import {styles} from './styles';
 import {Modal} from '../modal/modal';
 import {sharedContext} from '../../contexts/sharedContext';
+import {store} from '../../redux/store';
+import {useSelector} from 'react-redux';
 
 const generateArray = data => {
   const res = [];
@@ -23,12 +25,17 @@ export const Favourites = () => {
   const window = Dimensions.get('window');
   const statusBarHeight = StatusBar.currentHeight || 0;
 
+  // const {navigationHeight} = store.getState();
+  const navigationHeight = useSelector(
+    store => store.sharedReducer.navigationHeight,
+  );
+
   const {getFavourites, removeFromFavourites} = useStorage();
   const [favourites, setFavourites] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const {navigationHeight} = useContext(sharedContext);
+  // const {navigationHeight} = us≥eContext(sharedContext);
 
   useEffect(() => {
     const loadFavourites = async () => {

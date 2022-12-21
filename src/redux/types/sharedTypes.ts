@@ -1,0 +1,3 @@
+export const SharedTypes = {
+  UPDATE_NAVIGATION_HEIGHT: 'UPDATE_NAVIGATION_HEIGHT',
+};
