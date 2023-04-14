@@ -11,14 +11,6 @@ import {styles} from './styles';
 import {Modal} from '../modal/modal';
 import {sharedContext} from '../../contexts/sharedContext';
 
-const generateArray = data => {
-  const res = [];
-  for (let i = 0; i < [1, 2, 3, 4, 5].length; i++) {
-    res.push(...data);
-  }
-  return res;
-};
-
 export const Favourites = () => {
   const window = Dimensions.get('window');
   const statusBarHeight = StatusBar.currentHeight || 0;
@@ -33,17 +25,16 @@ export const Favourites = () => {
   useEffect(() => {
     const loadFavourites = async () => {
       let data = await getFavourites();
-      data = generateArray(data);
       setFavourites(data);
     };
     loadFavourites();
-  }, [getFavourites]);
+  }, []);
 
   const closeModal = () => {
     setShowModal(false);
   };
 
-  const removeFavourites = async favouritesItem => {
+  const removeFavourites = async (favouritesItem: any) => {
     await removeFromFavourites(favouritesItem); //удаляем фавориты
     const data = await getFavourites(); // а тут обновили и сохранили
     setFavourites(data);
