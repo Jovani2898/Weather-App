@@ -1,5 +1,4 @@
 export const getWeatherCodeTitle = (weathercode: number) => {
-  console.log({weathercode});
   if (weathercode < 10) {
     return 'Sunny';
   } else if (weathercode < 20) {
@@ -22,7 +21,7 @@ export const getWeatherCodeTitle = (weathercode: number) => {
 };
 
 const sunnyBG = require('../../assets/sunny.png');
-const cloudsBG = require('../../assets/Clouds.png');
+const cloudsBG = require('../../assets/clouds.png');
 const rainLightBG = require('../../assets/rainlight.png');
 const snowBG = require('../../assets/snow.png');
 const fogBG = require('../../assets/fog.png');
