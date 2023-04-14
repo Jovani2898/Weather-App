@@ -12,17 +12,19 @@ const App = () => {
   const [activePage, setActivePage] = useState('home');
   const [background, setBackground] = useState(null);
 
-  const [playSplash, setPlaySplash] = useState(false);
+  const [playSplash, setPlaySplash] = useState(true);
 
   const [navigationHeight, setNavigationHeight] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setPlaySplash(true);
+      setPlaySplash(false);
     }, 5000);
 
     return () => clearInterval(timer);
   }, []);
+
+  console.log(playSplash);
 
   return (
     <SharedContextProvider value={{navigationHeight, setNavigationHeight}}>
